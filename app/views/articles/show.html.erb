@@ -2,6 +2,18 @@
 
 <%= render @article %>
 
+<% @article.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300 %>
+<% end %>
+
+
+<div class="card-category"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @article.photos.first.key, height: 300, crop: :fill %>')"
+>
+  Cool article
+</div>
+
+
 <div>
   <%= link_to "Edit this article", edit_article_path(@article) %> |
   <%= link_to "Back to articles", root_path %>
